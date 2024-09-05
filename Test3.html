@@ -1,0 +1,609 @@
+
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Test2</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+ 
+
+  body {
+    font-family: "Rounded Mplus 1c";
+    padding: 30px;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left : auto;
+  }
+
+  .oneracepoints{
+    width: 140px;
+    display: inline-block;
+    font-size: 14px;
+  }
+
+  input[type=checkbox] {
+      transform: scale(1.6);
+      background-color: #373737;
+      border: 1px solid #cacece;
+  }   
+
+  input[type='number']{
+    width: 80px;
+} 
+
+/*
+input[type="text"], textarea {
+    background-color : #6c6c6c; 
+    outline-color: white;
+    outline: 1px;
+}
+
+input[type="number"], textarea {
+    background-color : #6c6c6c; 
+}
+
+tr {background-color: aqua;}
+  tr:nth-child(even) {background-color: #6c6c6c;}
+  tr:nth-child(odd) {background-color: #5b5b5b;}
+  h3, b, p, br, td, th {color: #ffffff;}
+
+*/
+
+  </style>
+</head>
+<body>
+
+  <!--FORM START-->
+  <form    
+  method="POST" 
+  action="https://script.google.com/macros/s/AKfycbyouHAHuKZ0NswZf5U3n6XIYQCFNrN4xb7IPpJD3STToretg6fY8kRmcI_PPcDm6tY/exec"
+  form id="form-id" onkeydown="if(event.keyCode === 13) {
+    ;
+    return false;
+  }"
+>
+
+
+
+<center>
+  <h3><b>War Data Tracker</b></h3>
+  <hr />
+  <div style="padding:10px;font-size:14px;">
+    <input class=ttitles type=text list="teamnames" id="Teams" name="TeamA" placeholder="Team">
+    vs
+    <input type=text list="teamnames" id="Teams" name="TeamB" placeholder="Opponent">
+
+<!--    <body style="background-color: #6c6c6c;" -->
+
+    <!-- Team List-->
+    <datalist id="teamnames">
+      <option value="Yoshi Süß-Sauer (yß★)">
+      <option value="Yoshi Bitter-Salzig (yß☆)">
+      <option value="Yoshi Mix (yß)">  
+      <option value="Hauptbahnhof (HBF)">
+      <option value="Epiphany (Ep)">
+      <option value="Claquette Chaussette Crew (CCC)">
+      <option value="Dark Stars Family (DSF)">
+      <option value="Snow Owl (owl)">
+      <option value="Clan't">
+      <option value="Kartvengers Team (K)">
+      <option value="OnlyFriends (OF)">
+      <option value="">
+      </datalist>
+
+    <br />
+    <br />
+    <!-- Find a way to remove this and just auto to 12 races-->
+    <p>How many races?  <select name="example" size="1" id="total_race_num"></p>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12" selected>12</option>
+    </select>
+  </div>
+</center>
+
+
+
+<div class="printer-type" id="resultarray">
+  <table border="0" class="printer-row table table-striped table-condensed table-responsive">
+    <!-- table-striped table-hover -->
+    <tr class="onerace">
+      <td class="oneracepoints">&nbsp;</td>
+      <td>Picked?</td>
+      <th>Our Map</th>
+      <th>Their Map</th>
+      <td>1st</td>  <!--make all of these tableheads (th) instead of td??-->
+      <td>2nd</td>
+      <td>3rd</td>
+      <td>4th</td>
+      <td>5th</td>
+      <td>6th</td>
+      <td>7th</td>
+      <td>8th</td>
+      <td>9th</td>
+      <td>10th</td>
+      <td>11th</td>
+      <td>12th</td>
+      <th>Enter Score</th>
+      <th>Result</th>
+    </tr>
+    <tr class="onerace">
+      <td round="1">Race 1</td>
+      <td><input type="checkbox" name="Pick1" class="chb"></td>
+ <!--     <td><input type="text" name="Map1A" id="Map1A" cols=10 rows=1 placeholder="Our Pick"></td>  -->
+      <td><input type=text list="Maps" name="Map1A" id="Maps" placeholder="Our Pick"></td> 
+      <td><input type=text list="Maps" name="Map1B" id="Maps" placeholder="Their Pick"></td> 
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+<!--      <td id="Race1" name="Race1">&nbsp;</td>  -->
+<!--      <td id="TestRacePoints" name="TestRacePoints">&nbsp;</td> -->
+      <td><input type="number" id="Result1" name="Result1" maxlength="2" size="2"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+
+    <tr class="onerace">
+      <td round="2">Race 2</td>
+      <td><input type="checkbox" name="Pick2" class="chb"></td>
+      <td><input type=text list="Maps" name="Map2A" id="Maps" placeholder="Our Pick"></td>
+      <td><input type=text list="Maps" name="Map2B" id="Maps" placeholder="Their Pick"></td> 
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+      <td><input type="number" id="Result2" name="Result2"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+
+    <tr class="onerace">
+      <td round="3">Race 3</td>
+      <td><input type="checkbox" name="Pick3" class="chb"></td>
+      <td><input type=text list="Maps" name="Map3A" id="Maps" placeholder="Our Pick"></td>
+      <td><input type=text list="Maps" name="Map3B" id="Maps" placeholder="Their Pick"></td> 
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+      <td><input type="number" id="Result3" name="Result3"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+
+    <tr class="onerace">
+      <td round="4">Race 4</td>
+      <td><input type="checkbox" name="Pick4" class="chb"></td>
+      <td><input type=text list="Maps" name="Map4A" id="Maps" placeholder="Our Pick"></td>
+      <td><input type=text list="Maps" name="Map4B" id="Maps" placeholder="Their Pick"></td>
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+      <td><input type="number" id="Result4" name="Result4"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+
+    <tr class="onerace">
+      <td round="5">Race 5</td>
+      <td><input type="checkbox" name="Pick5" class="chb"></td>
+      <td><input type=text list="Maps" name="Map5A" id="Maps" placeholder="Our Pick"></td>
+      <td><input type=text list="Maps" name="Map5B" id="Maps" placeholder="Their Pick"></td>
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+      <td><input type="number" id="Result5" name="Result5"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+
+    <tr class="onerace">
+      <td round="6">Race 6</td>
+      <td><input type="checkbox" name="Pick6" class="chb"></td>
+      <td><input type=text list="Maps" name="Map6A" id="Maps" placeholder="Our Pick"></td>
+      <td><input type=text list="Maps" name="Map6B" id="Maps" placeholder="Their Pick"></td>
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+      <td><input type="number" id="Result6" name="Result6"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+
+    <tr class="onerace">
+      <td round="7">Race 7</td>
+      <td><input type="checkbox" name="Pick7" class="chb"></td>
+      <td><input type=text list="Maps" name="Map7A" id="Maps" placeholder="Our Pick"></td>
+      <td><input type=text list="Maps" name="Map7B" id="Maps" placeholder="Their Pick"></td>
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+      <td><input type="number" id="Result7" name="Result7"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+
+    <tr class="onerace">
+      <td round="8">Race 8</td>
+      <td><input type="checkbox" name="Pick8" class="chb"></td>
+      <td><input type=text list="Maps" name="Map8A" id="Maps" placeholder="Our Pick"></td>
+      <td><input type=text list="Maps" name="Map8B" id="Maps" placeholder="Their Pick"></td>
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+      <td><input type="number" id="Result8" name="Result8"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+
+    <tr class="onerace">
+      <td round="9">Race 9</td>
+      <td><input type="checkbox" name="Pick9" class="chb"></td>
+      <td><input type=text list="Maps" name="Map9A" id="Maps" placeholder="Our Pick"></td>
+      <td><input type=text list="Maps" name="Map9B" id="Maps" placeholder="Their Pick"></td>
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+      <td><input type="number" id="Result9" name="Result9"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+
+    <tr class="onerace">
+      <td round="10"><span class="title">Race 10</span></td>
+      <td><input type="checkbox" name="Pick10" class="chb"></td>
+      <td><input type=text list="Maps" name="Map10A" id="Maps" placeholder="Our Pick"></td>
+      <td><input type=text list="Maps" name="Map10B" id="Maps" placeholder="Their Pick"></td>
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+      <td><input type="number" id="Result10" name="Result10"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+
+    <tr class="onerace">
+      <td round="11">Race 11</td>
+      <td><input type="checkbox" name="Pick11" class="chb"></td>
+      <td><input type=text list="Maps" name="Map11A" id="Maps" placeholder="Our Pick"></td>
+      <td><input type=text list="Maps" name="Map11B" id="Maps" placeholder="Their Pick"></td>
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+      <td><input type="number" id="Result11" name="Result11"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+
+    <tr class="onerace">
+      <td round="12">Final Race </td>
+      <td><input type="checkbox" name="Pick12" class="chb"></td>
+      <td><input type=text list="Maps" name="Map12A" id="Maps" placeholder="Our Pick"></td>
+      <td><input type=text list="Maps" name="Map12B" id="Maps" placeholder="Their Pick"></td>
+      <td><input type="checkbox" value="15" class="chb"></td>
+      <td><input type="checkbox" value="12" class="chb"></td>
+      <td><input type="checkbox" value="10" class="chb"></td>
+      <td><input type="checkbox" value="9" class="chb"></td>
+      <td><input type="checkbox" value="8" class="chb"></td>
+      <td><input type="checkbox" value="7" class="chb"></td>
+      <td><input type="checkbox" value="6" class="chb"></td>
+      <td><input type="checkbox" value="5" class="chb"></td>
+      <td><input type="checkbox" value="4" class="chb"></td>
+      <td><input type="checkbox" value="3" class="chb"></td>
+      <td><input type="checkbox" value="2" class="chb"></td>
+      <td><input type="checkbox" value="1" class="chb"></td>
+      <td><input type="number" id="Result12" name="Result12"></td>
+      <td class="oneracepoints">&nbsp;</td>
+    </tr>
+
+    <tr class="onerace">
+      <td> </td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+
+
+
+<!-- Map List -->
+<datalist id="Maps">
+  <option value="Mario Kart Stadium (MKS)">
+  <option value="Water Park (WP)">
+  <option value="Sweet Sweet Canyon (SSC)">
+  <option value="Thwomp Ruins (TR)">
+  <option value="Mario Circuit (MC)">
+  <option value="Toad Harbour (TH)">
+  <option value="Twisted Mansion (TM)">
+  <option value="Shy Guy Falls (SGF)">
+  <option value="Sunshine Airport (SA)">
+  <option value="Dolphin Shoals (DS)">
+  <option value="Electrodrome (ED)">
+  <option value="Mount Wario (MW)">
+  <option value="Cloudtop Cruise (CC)">
+  <option value="Bone Dry Dunes (BDD)">
+  <option value="Bowser's Castle (BC)">
+  <option value="Rainbow Road (RR)">
+  <option value="Yoshi Circuit (dYC)">
+  <option value="Excitebike Arena (dEA)">
+  <option value="Dragon Driftway (dDD)">
+  <option value="Mute City (dMC)">
+  <option value="BabyPark (dBP)">
+  <option value="Cheese Land (dCL)">
+  <option value="Wild Woods (dWW)">
+  <option value="Animal Crossing (dAC)">
+  <option value="Moo Moo Meadows (rMMM)">
+  <option value="GBA Mario Circuit (rMC)">
+  <option value="Cheep Cheep Beach (rCCB)">
+  <option value="Toad's Turnpike (rTT)">
+  <option value="Dry Dry Desert (rDDD)">
+  <option value="Donut Plains 3 (rDP3)">
+  <option value="Royal Raceway (rRRY)">
+  <option value="DK Jungle (rDKJ)">
+  <option value="Wario Stadium (rWS)">
+  <option value="Sherbet Land (rSL)">
+  <option value="Music Park (rMP)">
+  <option value="Yoshi Valley (rYV)">
+  <option value="Tick-Tock Clock (rTTC)">
+  <option value="Piranha Plant Slide (rPPS)">
+  <option value="Grumble Volcano (rGV)">
+  <option value="N64 Rainbow Road (rRRD)">
+  <option value="Wario's Gold Mine (dWGM)">
+  <option value="SNES Rainbow Road (dRR)">
+  <option value="Ice Ice Outpost (dIIO)">
+  <option value="Hyrule Circuit (dHC)">
+  <option value="Neo Bowser City (dNBC)">
+  <option value="Ribbon Road (dRIR)">
+  <option value="Super Bell Subway (dSBS)">
+  <option value="Big Blue (dBB)">
+  <option value="Paris Promenade (bPP)">
+  <option value="Toad Circuit (bTC)">
+  <option value="Choco Mountain (bCMo)">
+  <option value="Coconut Mall (bCMa)">
+  <option value="Tokyo Blur (bTB)">
+  <option value="Shroom Ridge (bSR)">
+  <option value="Sky Garden (bSG)">
+  <option value="Ninja Hideaway (bNH)">
+  <option value="New York Minute (bNYM)">
+  <option value="Mario Circuit 3 (bMC3)">
+  <option value="Kalimari Desert (bKD)">
+  <option value="Waluigi Pinball (bWP)">
+  <option value="Sidney Sprint (bSS)">
+  <option value="Snow Land (bSL)">
+  <option value="Mushroom Gorge (bMG)">
+  <option value="Sky-High Sundae (bSHS)">
+  <option value="London Loop (bLL)">
+  <option value="Boo Lake (bBL)">
+  <option value="Rock Rock Mountain (bRRM)">
+  <option value="Maple Treeway (bMT)">
+  <option value="Berlin Byways (bBB)">
+  <option value="Peach Gardens (bPG)">
+  <option value="Merry Mountain (bMM)">
+  <option value="3DS Rainbow Road (bRR7)">
+  <option value="Amsterdam Drift (bAD)">
+  <option value="Riverside Park (bRP)">
+  <option value="DK Summit (bDKS)">
+  <option value="Yoshi's Island (bYI)">
+  <option value="Bangkok Rush (bBR)">
+  <option value="DS Mario Circuit (bMC)">
+  <option value="Waluigi Stadium (bWS)">
+  <option value="Singapore Speedway (bSSy)">
+  <option value="Athens Dash (bAtD)">
+  <option value="Daisy Cruiser (bDC)">
+  <option value="Moonview Highway (bMH)">
+  <option value="Squeaky Clean Sprint (bSCS)">
+  <option value="Los Angeles Laps (bLAL)">
+  <option value="Sunset Wilds (bSW)">
+  <option value="Koopa Cape (bKC)">
+  <option value="Vancouver Velocity (bVV)">
+  <option value="Rome Avanti (bRA)">
+  <option value="DK Mountain (bDKM)">
+  <option value="Daisy Circuit (bDCt)">
+  <option value="Piranha Plant Cove (bPPC)">
+  <option value="Madrid Drive (bMD)">
+  <option value="Rosalina's Ice World (bRIW)">
+  <option value="Bowser's Castle 3 (bBC3)">
+  <option value="Wii Rainbow Road (bRRW)">
+</datalist>
+
+
+  </table>
+</div>
+
+
+
+
+
+<!-- script for plot graph -->
+
+
+<!-- script for calc point -->
+<script>
+$('.chb').on( "click",function(){
+  //total calculation
+  $(".printer-type tr:not(:first, last) td:last-child").text(function () {
+    var OneRaceValA = 0;
+    var OneRaceValB = 0;
+    var diff = 0;
+    var round = 0;
+    var TotalValA = 0;
+    var TotalValB = 0;
+
+    var ThisRaceResult = "";
+    var CumlRaceResult = "";
+    var RemRace = 0;
+    var TotalRaceNum = $("#total_race_num").val();
+
+    // Score for one race
+    $(this).prevAll().each(function () {
+      OneRaceValA += parseInt($(this).children('.chb:checked').val()) || 0;
+      round = parseInt($(this).attr('round'));
+    });
+    OneRaceValB = 82 - OneRaceValA;
+    ThisRaceResult = OneRaceValA + "-" + OneRaceValB ;
+
+    // Cumulative score
+    var temp = "";
+    $("#resultarray").find('.oneracepoints:gt(0):lt('+(round-1)+')').each(function () {
+      temp = $(this).text().split('/')[0].split('-');
+      TotalValA += parseInt(temp[0]);
+      TotalValB += parseInt(temp[1]);
+    });
+
+    TotalValA += OneRaceValA;
+    TotalValB += OneRaceValB;
+
+    CumlRaceResult = $("#teamA").val() + " " +  TotalValA + "-" + TotalValB + " " + $("#teamB").val();
+    diff = TotalValA - TotalValB;
+
+    // Remaining Races
+    RemRace = " Rem:" + (TotalRaceNum - round);
+
+   // if(OneRaceValA!=0){
+   //   document.getElementById("TestRacePoints").innerHTML=OneRaceValA;
+   // }
+
+    return ThisRaceResult + " (diff:" + diff + ")";
+  // return ThisRaceResult + " / " + CumlRaceResult + " (diff:" + diff + RemRace + ")";
+  });
+  $(".printer-type tr:last td:last").text("")
+});
+</script>
+
+
+<button class="button" type="submit">Submit Data</button>
+
+
+<!--FORM END-->
+</form>
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- sakura -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3422749596492644"
+     data-ad-slot="1648297909"
+     data-ad-format="auto"></ins>
+<!--<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>-->
+</body>
+</html>
